@@ -6,8 +6,8 @@ export const protect = asyncHandler(async(req,res,next)=>{
 
     let token;
 
-    if(req.authorization.headers && req.authorization.headers.startsWith("Bearer ")){
-        token = req.authorization.headers.split(" ")[1]
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
+        token = req.headers.authorization.split(" ")[1]
     }
 
     if(!token){

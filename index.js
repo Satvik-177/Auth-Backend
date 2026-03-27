@@ -1,8 +1,8 @@
 import express from "express"
 import dotenv from "dotenv"
 import connectToDB from "./src/config/db.js"
-import {authRoutes} from "../BackendProj_Wibe/src/routes/auth.routes.js"
-import { userRoutes } from "./src/routes/user.routes.js"
+import authRoutes from "../BackendProj_Wibe/src/routes/auth.routes.js"
+import userRoutes from "./src/routes/user.routes.js"
 import { errorHandler } from "./src/middlewares/error.middlewares.js"
 
 const app = express()
