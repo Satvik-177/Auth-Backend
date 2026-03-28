@@ -1,6 +1,7 @@
 import express from "express"
 import {protect} from "../middlewares/auth.middlewares.js"
 import upload from "../middlewares/upload.middleware.js"
+import { getUsers } from "../controllers/user.controller.js"
 
 const userRoutes = express.Router()
 
@@ -17,5 +18,7 @@ userRoutes.post("/upload", protect, upload.single("file"), (req, res) => {
         file: req.file
     })
 })
+
+userRoutes.get("/",protect,getUsers)
 
 export default userRoutes
