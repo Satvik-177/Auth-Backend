@@ -4,7 +4,7 @@ import asyncHandler from "../utils/asyncHandler.js"
 export const getUsers = asyncHandler(async(req,res,next)=>{
 
     //Query parameters are key-value pairs passed in the URL after ? to send additional data to the server.
-    //Using parseInt because all values are in dtring format
+    //Using parseInt because all values are in String format
 
     const page = parseInt(req.query.page) || 1 
     const limit = parseInt(req.query.limit) || 5
