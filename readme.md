@@ -387,3 +387,68 @@ Local middlware -> Yes , so no need to use app.use()
 
 END OF DOCUMENT
 >>>>>>> fd3d6a7 (feat: added file upload functionality using multer with protected route)
+
+--------------------------------------------------------
+## "Morgan = automatic request logger for debugging and monitoring APIs"
+
+👉 "Morgan logs every request coming to your server"
+
+🔥 Other formats of morgan
+
+Format	        Use
+"dev"	        short + colored (development)
+"combined"	detailed logs (production)
+"tiny"	        very minimal
+"common"	standard Apache logs
+
+---------------------------------------------------------
+
+## RATE LIMITER
+
+💣 Real problem
+
+👉 agar rate limiting na ho:
+
+Ek user → 1000 requests/sec 💀
+
+👉 result:
+
+server slow
+crash
+brute force attack
+
+🔥 Internally kya hota hai?
+
+👉 maan le ek user request bhejta hai:
+
+IP: 192.168.1.1
+
+🔁 Step-by-step flow
+
+Request aayi
+   ↓
+Rate limiter middleware chala
+   ↓
+IP check kiya
+   ↓
+Is IP ka count nikala
+   ↓
+[Condition]
+   ↓
+✔ limit ke andar → allow
+❌ limit cross → block (429)
+
+👉 express-rate-limit internally karta hai:
+
+store = {
+  "192.168.1.1": {
+    count: 5,
+    firstRequestTime: timestamp
+  }
+}
+
+🚀 Real-world use
+
+login API → brute force rokna
+public APIs → spam control
+payment APIs → security
